@@ -1,3 +1,4 @@
+import { categories } from "./constants";
 import { prisma } from "./prisma-client"
 import {hashSync} from 'bcrypt'
 
@@ -20,6 +21,10 @@ async function up() {
                 role: 'ADMIN', 
             }
         ]
+    })
+
+    await prisma.category.createMany({
+        data: categories
     })
 
 }
